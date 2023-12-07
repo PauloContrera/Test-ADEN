@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <data>
+    <!-- Vistas -->
+
+    <!-- Vista Tree para Alumno -->
+    <record model="ir.ui.view" id="colegio_alumno_tree">
+      <field name="name">Alumno Tree</field>
+      <field name="model">colegio.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="fecha_nacimiento"/>
+          <field name="legajo"/>
+          <field name="email"/>
+          <field name="telefono"/>
+          <field name="direccion"/>
+          <field name="pais_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista Formulario para Alumno -->
+    <record model="ir.ui.view" id="colegio_alumno_form">
+      <field name="name">Alumno Form</field>
+      <field name="model">colegio.alumno</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombre"/>
+              <field name="apellido"/>
+              <field name="fecha_nacimiento"/>
+              <field name="legajo"/>
+              <field name="email"/>
+              <field name="telefono"/>
+              <field name="direccion"/>
+              <field name="pais_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista Tree para Programa -->
+    <record model="ir.ui.view" id="colegio_programa_tree">
+      <field name="name">Programa Tree</field>
+      <field name="model">colegio.programa</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="descripcion"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista Formulario para Programa -->
+    <record model="ir.ui.view" id="colegio_programa_form">
+      <field name="name">Programa Form</field>
+      <field name="model">colegio.programa</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="descripcion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Acciones -->
+
+    <!-- Acción para la ventana de Alumno -->
+    <record model="ir.actions.act_window" id="colegio_action_window_alumno">
+      <field name="name">Alumnos</field>
+      <field name="res_model">colegio.alumno</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="colegio_alumno_tree" />
+    </record>
+
+    <!-- Acción para la ventana de Programa -->
+    <record model="ir.actions.act_window" id="colegio_action_window_programa">
+      <field name="name">Programas</field>
+      <field name="res_model">colegio.programa</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="colegio_programa_tree" />
+    </record>
+
+    <!-- Menú -->
+
+    <!-- Menú raíz para Programas -->
+    <menuitem name="Programas" id="menu_colegio_programa_root" />
+
+    <!-- Menú Acciones para Programas -->
+
+    <!-- Lista de Programas -->
+    <menuitem name="Lista de Programas" id="menu_colegio_programa_list" parent="menu_colegio_programa_root" action="colegio_action_window_programa" />
+
+    <!-- Menú raíz para Alumnos -->
+    <menuitem name="Alumnos" id="menu_colegio_alumno_root" />
+
+    <!-- Menú Acciones para Alumnos -->
+
+    <!-- Lista de Alumnos -->
+    <menuitem name="Lista de Alumnos" id="menu_colegio_alumno_list" parent="menu_colegio_alumno_root" action="colegio_action_window_alumno" />
+
+  </data>
+</odoo>
